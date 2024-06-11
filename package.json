@@ -1,0 +1,15 @@
+{
+  "name": "tours",
+  "version": "1.0.0",
+  "description": "this application allows you to exploar most recent tours to explor the world and start to have fun.So what are you waiting for? Start Now",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hana Mohamed",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0"
+  }
+}
