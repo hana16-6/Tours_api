@@ -10,6 +10,7 @@ const AppError = require('./utilities/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/toursRoutes');
 const userRouter = require('./routes/userRoutes');
+const reviewsRouter = require('./routes/reviewsRoutes');
 
 const app = express();
 // 1) GLOBAL MIDDLEWARES
@@ -64,6 +65,7 @@ app.use((req, res, next) => {
 //routes
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', reviewsRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find this ${req.originalUrl} on this server`, 404));
