@@ -11,21 +11,14 @@ router.post('/login', authController.login);
 router.post('/forgetPassword', authController.forgetPassword);
 router.patch('/resetPassword/:token', authController.resetPassword);
 
-router.patch(
-  '/updateMyPassword',
-  authController.protectRoutes,
-  authController.updatePassword,
-);
-router.patch(
-  '/updateMe',
-  authController.protectRoutes,
-  userController.updateMe,
-);
-router.delete(
-  '/deleteMe',
-  authController.protectRoutes,
-  userController.deleteMe,
-);
+//this will apply for all the routes come after this line
+router.use(authController.protectRoutes);
+router.patch('/updateMyPassword', authController.updatePassword);
+router.get('/me', userController.getMe, userController.getUser);
+router.patch('/updateMe', userController.updateMe);
+router.delete('/deleteMe', userController.deleteMe);
+
+router.use(authController.restrictTo('admin'));
 router
   .route('/')
   .get(userController.getAllUsers)
